@@ -3,7 +3,7 @@ String data;
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(9600);
+  Serial.begin(115200);
   pinMode(11, OUTPUT);
 
 }
@@ -14,7 +14,7 @@ void loop() {
   data = "";
   while(Serial.available())
   {
-    delay(10);
+    delay(1);
     if (Serial.available() > 0)
     {
       char c = Serial.read();
