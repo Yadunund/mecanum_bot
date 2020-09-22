@@ -35,7 +35,7 @@ class Teleoperator(Node):
             self.joy_cb,
             qos_profile=qos_profile_system_default)
             
-        self.ser = serial.Serial(self.arduino_port, 9600)
+        self.ser = serial.Serial(self.arduino_port, 115200)
 
     def joy_cb(self, msg):
         self.display_msg(msg)
