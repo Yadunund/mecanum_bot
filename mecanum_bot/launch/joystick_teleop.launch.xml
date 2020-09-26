@@ -3,5 +3,6 @@
 <launch>
   <group>
     <node pkg="joy" exec="joy_node" args="--ros-args --remap _dev:=/dev/input/js0" />
-  </group>
+    <node pkg="mecanum_bot_teleop" exec="teleop_node" />
+ </group>
 </launch>
