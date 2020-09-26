@@ -1,0 +1,7 @@
+<?xml version='1.0' ?>
+
+<launch>
+  <group>
+    <node pkg="joy" exec="joy_node" args="--ros-args --remap _dev:=/dev/input/js0" />
+  </group>
+</launch>
