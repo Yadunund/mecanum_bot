@@ -39,7 +39,7 @@ class Teleoperator(Node):
         self.ser = serial.Serial(self.arduino_port, 115200)
 
     def joy_cb(self, msg):
-        self.display_msg(msg)
+        # self.display_msg(msg)
         self.axes = msg.axes
         self.buttons = msg.buttons
 
@@ -49,8 +49,9 @@ class Teleoperator(Node):
         result = self.compute_velocities(self.axes, self.buttons)
 
         encoded_data = str(round(255*result[0])).encode()
-        print(f"Sending encoded data: {encoded_data}")
+        self.get_logger().info(f"Sending encoded data: {encoded_data}")
         self.ser.write(encoded_data)
+        sleep(0.025)
 
     def display_msg(self, msg):
         print("Axes values: ")
