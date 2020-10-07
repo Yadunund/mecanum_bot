@@ -10,6 +10,7 @@ from rclpy.qos import qos_profile_system_default
 
 from sensor_msgs.msg import Joy
 
+from mecanum_bot_controller.controller import compute_motor_velocities
 
 class Teleoperator(Node):
     def __init__(self):
