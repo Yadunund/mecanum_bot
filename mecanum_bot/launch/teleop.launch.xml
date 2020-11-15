@@ -1,0 +1,7 @@
+<?xml version='1.0' ?>
+
+<launch>
+  <group>
+    <node pkg="mecanum_bot_teleop" exec="teleop_node" />
+ </group>
+</launch>

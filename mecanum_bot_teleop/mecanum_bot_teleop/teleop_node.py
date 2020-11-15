@@ -11,6 +11,7 @@ from rclpy.qos import qos_profile_system_default
 from sensor_msgs.msg import Joy
 
 from mecanum_bot_controller.controller import compute_motor_velocities
+from mecanum_bot_controller.controller import Robot
 
 class Teleoperator(Node):
     def __init__(self):
@@ -38,6 +39,23 @@ class Teleoperator(Node):
             
         self.ser = serial.Serial(self.arduino_port, 115200)
 
+        wheel_base = 0.3
+        if (self.declare_parameter('wheel_base').value):
+            self.wheel_base = self.get_parameter('wheel_base').value
+        self.get_logger().info(f"Setting wheel base: {self.wheel_base}")
+
+        track_width = 0.3
+        if (self.declare_parameter('track_width').value):
+            self.wheel_base = self.get_parameter('track_width').value
+        self.get_logger().info(f"Setting track width: {self.track_width}")
+
+        wheel_radius = 0.05
+        if (self.declare_parameter('wheel_radius').value):
+            self.wheel_base = self.get_parameter('wheel_radius').value
+        self.get_logger().info(f"Setting wheel radius: {self.wheel_radius}")
+
+        self.robot = Robot(wheel_base, track_width, wheel_radius)
+
     def joy_cb(self, msg):
         # self.display_msg(msg)
         self.axes = msg.axes
@@ -46,11 +64,11 @@ class Teleoperator(Node):
         if (self.buttons[self.enable_button] == 0):
               return
 
-        result = self.compute_velocities(self.axes, self.buttons)
+        result = compute_motor_velocities(self.axes, self.robot)
 
-        encoded_data = str(round(255*result[0])).encode()
+        encoded_data = str(result).encode()
         self.get_logger().info(f"Sending encoded data: {encoded_data}")
-        self.ser.write(encoded_data)
+        # self.ser.write(encoded_data)
         sleep(0.025)
 
     def display_msg(self, msg):

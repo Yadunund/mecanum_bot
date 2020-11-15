@@ -1,15 +1,13 @@
 import math
+import numpy as np
+   
+class Robot:
+    def __init__(self, wheel_base, track_width, wheel_radius):
+        self.wheel_base = wheel_base
+        self.track_width = track_width
+        self.wheel_radius = wheel_radius
 
-def compute_yaw_velocities(axes, max_value):
-    return []
 
-def compute_holonomic_velocities(axes, max_value):
-    return []
-    
-def compute_motor_velocities(axes, threshold=0.01, max_value=255):
+def compute_motor_velocities(axes, robot, threshold=0.01, max_value=255):
     assert(len(axes) > 2)
-
-    if (abs(axes[3]) > threshold):
-        return compute_yaw_velocities(axes, max_value)
-    else:
-        return compute_holonomic_velocities(axes, max_value)
+    return np.zeros(4)
