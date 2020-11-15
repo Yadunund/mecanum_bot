@@ -36,23 +36,28 @@ class Teleoperator(Node):
             '/joy',
             self.joy_cb,
             qos_profile=qos_profile_system_default)
-            
-        self.ser = serial.Serial(self.arduino_port, 115200)
 
+        self.serial_connected = False
+        try:
+            self.ser = serial.Serial(self.arduino_port, 115200)
+            self.serial_connected = True
+        except:
+            print(f"Unable to open connection on serial port:{self.arduino_port}")
+        
         wheel_base = 0.3
         if (self.declare_parameter('wheel_base').value):
             self.wheel_base = self.get_parameter('wheel_base').value
-        self.get_logger().info(f"Setting wheel base: {self.wheel_base}")
+        self.get_logger().info(f"Setting wheel base: {wheel_base}")
 
         track_width = 0.3
         if (self.declare_parameter('track_width').value):
             self.wheel_base = self.get_parameter('track_width').value
-        self.get_logger().info(f"Setting track width: {self.track_width}")
+        self.get_logger().info(f"Setting track width: {track_width}")
 
         wheel_radius = 0.05
         if (self.declare_parameter('wheel_radius').value):
             self.wheel_base = self.get_parameter('wheel_radius').value
-        self.get_logger().info(f"Setting wheel radius: {self.wheel_radius}")
+        self.get_logger().info(f"Setting wheel radius: {wheel_radius}")
 
         self.robot = Robot(wheel_base, track_width, wheel_radius)
 
@@ -68,7 +73,8 @@ class Teleoperator(Node):
 
         encoded_data = str(result).encode()
         self.get_logger().info(f"Sending encoded data: {encoded_data}")
-        # self.ser.write(encoded_data)
+        if self.serial_connected:
+            self.ser.write(encoded_data)
         sleep(0.025)
 
     def display_msg(self, msg):
@@ -79,10 +85,6 @@ class Teleoperator(Node):
         for button in msg.buttons:
             print(f"  -{button}")
         print("------------------------")
-
-    def compute_velocities(self, axes, buttons):
-        return [axes[0], axes[1], axes[2], axes[3]]
-
 
 def main(argv=sys.argv):
     rclpy.init(args=argv)
