@@ -1,0 +1,14 @@
+<?xml version='1.0' ?>
+
+<launch>
+  <group>
+    <node pkg="mecanum_bot_controller" exec="base_controller" >
+
+    <param name="arduino_port" value="/dev/ttyUSB0"/>
+    <param name="wheel_base" value="0.3"/>
+    <param name="track_width" value="0.3"/>
+    <param name="wheel_radius" value="0.048"/>
+
+    </node>
+ </group>
+</launch>
