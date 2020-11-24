@@ -2,16 +2,17 @@
 
 import sys
 import serial
+import threading
 from time import sleep
 
 import rclpy
 from rclpy.node import Node
 from rclpy.qos import qos_profile_system_default
 
-from sensor_msgs.msg import Joy
+from geometry_msgs.msg import Twist
 
-from robot import compute_motor_velocities
-from robot import Robot
+from mecanum_bot_controller.robot import compute_motor_velocities
+from mecanum_bot_controller.robot import Robot
 
 class BaseController(Node):
     def __init__(self):
@@ -26,15 +27,10 @@ class BaseController(Node):
             self.arduino_port = self.get_parameter('arduino_port').value
         self.get_logger().info(f"Setting arduino_port: {self.arduino_port}")
 
-        self.enable_button = 5
-        if (self.declare_parameter('enable_button').value):
-            self.arduino_port = self.get_parameter('enable_button').value
-        self.get_logger().info(f"Setting enable_button: {self.enable_button}")
-
         self.create_subscription(
-            Joy,
-            '/joy',
-            self.joy_cb,
+            Twist,
+            '/cmd_vel',
+            self.cmd_vel_cb,
             qos_profile=qos_profile_system_default)
 
         self.serial_connected = False
@@ -61,7 +57,11 @@ class BaseController(Node):
 
         self.robot = Robot(wheel_base, track_width, wheel_radius)
 
-    def joy_cb(self, msg):
+        self.desired_x = 0.0
+        self.desired_y = 0.0
+        self.desired_yaw = 0.0
+
+    def cmd_vel_cb(self, msg):
         # self.display_msg(msg)
         self.axes = msg.axes
         self.buttons = msg.buttons
@@ -77,14 +77,6 @@ class BaseController(Node):
             self.ser.write(encoded_data)
         sleep(0.025)
 
-    def display_msg(self, msg):
-        print("Axes values: ")
-        for axis in msg.axes:
-            print(f"  -{axis}")
-        print("Button values: ")
-        for button in msg.buttons:
-            print(f"  -{button}")
-        print("------------------------")
 
 def main(argv=sys.argv):
     rclpy.init(args=argv)

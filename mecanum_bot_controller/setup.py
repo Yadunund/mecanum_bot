@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-          'base_controller = mecanum_bot_controller.base_controller:main'
+          'base_controller = mecanum_bot_controller.mecanum_bot_controller:main'
         ],
     },
 )

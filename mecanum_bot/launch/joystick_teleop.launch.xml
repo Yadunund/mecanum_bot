@@ -6,7 +6,7 @@
     <node pkg="teleop_twist_joy" exec="teleop_node">
       <param name="axis_linear.x" value="1" />
       <param name="axis_linear.y" value ="0" />
-      <param name="axis_angular.yaw" value="3" />
+      <param name="axis_angular.yaw" value="2" />
       <param name="scale_linear.x" value="1.0" />
       <param name="scale_linear.y" value="1.0" />
       <param name="scale_angular.yaw" value="1.0" />
