@@ -61,21 +61,30 @@ class BaseController(Node):
         self.desired_y = 0.0
         self.desired_yaw = 0.0
 
+        self._lock = threading.Lock()
+        self.thread = threading.Thread(target=self.send_velocities)
+        self.thread.start()
+
     def cmd_vel_cb(self, msg):
-        # self.display_msg(msg)
-        self.axes = msg.axes
-        self.buttons = msg.buttons
+        with self._lock:
+            self.desired_x = msg.linear.x
+            self.desired_y = msg.linear.y
+            self.desired_yaw = msg.angular.z
 
-        if (self.buttons[self.enable_button] == 0):
-              return
-
-        result = compute_motor_velocities(self.axes, self.robot)
-
-        encoded_data = str(result).encode()
-        self.get_logger().info(f"Sending encoded data: {encoded_data}")
-        if self.serial_connected:
-            self.ser.write(encoded_data)
-        sleep(0.025)
+    def send_velocities(self):
+        while True:
+            input = [self.desired_x, self.desired_y, self.desired_yaw]
+            result = compute_motor_velocities(input, self.robot)
+            print(f"Computed wheel velocities: {result}")
+            if (self.serial_connected):
+                try:
+                    encoded_data = str(result).encode()
+                    self.get_logger().info(f"Sending encoded data: {encoded_data}")
+                    self.ser.write(encoded_data)
+                except:
+                    print(f"Unable to write wheel velocities to serial port")
+                    self.serial_connected = False
+            sleep(0.025)
 
 
 def main(argv=sys.argv):

@@ -8,20 +8,9 @@ class Robot:
         self.wheel_radius = wheel_radius
 
 
-def compute_motor_velocities(axes, robot, threshold=0.01, max_value=255):
-    assert(len(axes) > 2)
-    
+def compute_motor_velocities(input,robot,max_value=255):    
     motor_velocities = np.zeros(4)
-
-    joy_angle = np.arctan(axes[1]/axes[0])
-    joy_pos = np.sqrt(axes[0]**2 + axes[1]**2)
-    x_vel = joy_pos*np.cos(joy_angle)
-    y_vel = joy_pos*np.sin(joy_angle)
-    if (abs(axes[2] > threshold)):
-        w_vel = axes[2]
-    else:
-        w_vel = 0.0
-    robot_velocity = np.array([x_vel,y_vel,w_vel])
+    robot_velocity = np.array([[input[0]],[input[1]],[input[2]]])
 
     wb = robot.wheel_base/2.0
     tw = robot.track_width/2.0
@@ -33,8 +22,13 @@ def compute_motor_velocities(axes, robot, threshold=0.01, max_value=255):
                   [1,-1,(tw+wb)]])
     T=(1/r)*T
 
-    motor_velocities = np.matmul(T,robot_velocity)
+    raw_velocities = np.matmul(T,robot_velocity)
+    print(f"Raw motor velocities: {raw_velocities}")
     # Normalize motor velocities value and multiply by max_value
-    norm = np.linalg.norm(motor_velocities)
-    motor_velocities = max_value* motor_velocities / norm
+    if (max(raw_velocities) == 0.0):
+        return np.zeros(4)
+    motor_velocities = np.zeros(4) 
+    for i in range(len(raw_velocities)):
+      motor_velocities[i] = raw_velocities[i]*max_value/abs(max(raw_velocities))
+  
     return motor_velocities
