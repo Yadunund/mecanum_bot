@@ -84,7 +84,7 @@ class BaseController(Node):
                     self.get_logger().info(f"Sending encoded data: {encoded_data}")
                     self.ser.write(encoded_data)
                 except:
-                    print(f"Unable to write wheel velocities to serial port")
+                    self.get_logger().error(f"Unable to write wheel velocities to serial port")
                     self.serial_connected = False
             sleep(0.025)
 
