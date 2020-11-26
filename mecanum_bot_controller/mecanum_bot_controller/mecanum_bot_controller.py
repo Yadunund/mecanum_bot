@@ -55,7 +55,9 @@ class BaseController(Node):
             self.wheel_base = self.get_parameter('wheel_radius').value
         self.get_logger().info(f"Setting wheel radius: {wheel_radius}")
 
+        self.get_logger().info(f"HERE1")
         self.robot = Robot(wheel_base, track_width, wheel_radius)
+        self.get_logger().info(f"HERE2")
 
         self.desired_x = 0.0
         self.desired_y = 0.0
@@ -75,7 +77,7 @@ class BaseController(Node):
         while True:
             input = [self.desired_x, self.desired_y, self.desired_yaw]
             result = compute_motor_velocities(input, self.robot)
-            print(f"Computed wheel velocities: {result}")
+            self.get_logger().info(f"Computed wheel velocities: {result}")
             if (self.serial_connected):
                 try:
                     encoded_data = str(result).encode()
