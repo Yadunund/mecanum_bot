@@ -80,7 +80,13 @@ class BaseController(Node):
             self.get_logger().info(f"Computed wheel velocities: {result}")
             if (self.serial_connected):
                 try:
-                    encoded_data = str(result).encode()
+                    msg = "["
+                    for i in range(len(result)):
+                        msg = msg + str(int(result[i]))
+                        if (i != (len(result) - 1)):
+                            msg = msg + ","
+                    msg = msg + "]"
+                    encoded_data = msg.encode()
                     self.get_logger().info(f"Sending encoded data: {encoded_data}")
                     self.ser.write(encoded_data)
                 except:

@@ -34,6 +34,6 @@ def compute_motor_velocities(input,robot,max_value=255):
         return motor_velocities
     
     for i in range(len(raw_velocities)):
-      motor_velocities[i] = raw_velocities[i]*max_value/robot.max_wheel_speed
+        motor_velocities[i] = int(raw_velocities[i]*max_value/robot.max_wheel_speed)
   
     return motor_velocities
