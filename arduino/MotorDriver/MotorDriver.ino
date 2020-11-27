@@ -41,7 +41,7 @@ void loop()
   if (data.length() > 0)
   {
     // Remove the brackets
-    data = data.substring(1, data.length() - 2);
+    data = data.substring(1, data.length() - 1);
     
     int comma_indices[NUM_MOTORS -1] = {0, 0, 0};
     int comma_count = 0;
