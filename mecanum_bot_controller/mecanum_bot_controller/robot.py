@@ -21,7 +21,7 @@ class Robot:
                       [1,-1,(tw+wb)],
                       [1,1,-(tw+wb)]])
         self.inverse_transform_matrix=(1/r)*T
-        self.max_wheel_speed = max(np.matmul(self.inverse_transform_matrix, np.array([[1.0],[1.0],[1.0]])))
+        self.max_wheel_speed = max(abs(np.matmul(self.inverse_transform_matrix, np.array([[1.0],[1.0],[0.0]]))))
 
 def compute_motor_velocities(input,robot,max_value=255):    
     motor_velocities = np.zeros(4)
@@ -36,6 +36,6 @@ def compute_motor_velocities(input,robot,max_value=255):
     for i in raw_velocities:
         sum = sum + abs(i)
     for i in range(len(raw_velocities)):
-        motor_velocities[i] = raw_velocities[i]*max_value/sum
+        motor_velocities[i] = raw_velocities[i]*max_value/robot.max_wheel_speed
   
     return motor_velocities
