@@ -27,7 +27,7 @@ def compute_motor_velocities(input,robot,max_value=255):
     motor_velocities = np.zeros(4)
     if (len(input)<3):
         return motor_velocities
-    robot_velocity = np.array([[input[0]],[input[2]],[input[1]]])
+    robot_velocity = np.array([[input[0]],[input[1]],[input[2]]])
     raw_velocities = np.matmul(robot.inverse_transform_matrix,robot_velocity)
 
     if (max(raw_velocities) == 0.0):
@@ -36,6 +36,6 @@ def compute_motor_velocities(input,robot,max_value=255):
     for i in raw_velocities:
         sum = sum + abs(i)
     for i in range(len(raw_velocities)):
-        motor_velocities[i] = raw_velocities[i]*max_value/robot.max_wheel_speed
+        motor_velocities[i] = raw_velocities[i]*max_value/sum
   
     return motor_velocities

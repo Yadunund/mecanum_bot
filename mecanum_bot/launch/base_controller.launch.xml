@@ -4,7 +4,7 @@
   <group>
     <node pkg="mecanum_bot_controller" exec="base_controller" >
 
-    <param name="arduino_port" value="/dev/ttyUSB0"/>
+    <param name="arduino_port" value="/dev/ttyUSB1"/>
     <param name="wheel_base" value="0.25"/>
     <param name="track_width" value="0.25"/>
     <param name="wheel_radius" value="0.048"/>
