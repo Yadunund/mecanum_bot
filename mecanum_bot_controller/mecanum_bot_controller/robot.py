@@ -2,7 +2,7 @@ import math
 import numpy as np
    
 class Robot:
-    def __init__(self, wheel_base, track_width, wheel_radius):
+    def __init__(self, wheel_base, track_width, wheel_radius, max_v, max_w):
         # w1<--track width--> w2
         # ^                   |
         # |                   |
@@ -13,13 +13,15 @@ class Robot:
         self.wheel_base = wheel_base
         self.track_width = track_width
         self.wheel_radius = wheel_radius
+        self.max_v = max_v
+        self.max_w = max_w
         wb = self.wheel_base/2.0
         tw = self.track_width/2.0
         r = self.wheel_radius
-        T = np.array([[1,1,(tw+wb)],
-                      [1,-1,-(tw+wb)],
-                      [1,-1,(tw+wb)],
-                      [1,1,-(tw+wb)]])
+        T = np.array([[1,-1,-(tw+wb)],
+                      [1,1,(tw+wb)],
+                      [1,1,-(tw+wb)],
+                      [1,-1,(tw+wb)]])
         self.inverse_transform_matrix=(1/r)*T
         self.max_wheel_speed = max(abs(np.matmul(self.inverse_transform_matrix, np.array([[1.0],[1.0],[0.0]]))))
 
