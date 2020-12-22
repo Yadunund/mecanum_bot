@@ -12,7 +12,10 @@
   <exec_depend>joy</exec_depend>
   <exec_depend>teleop_twist_joy</exec_depend>
   <exec_depend>launch_xml</exec_depend>
-  <exec_depend>mecanum_bot_teleop</exec_depend>
+  
+  <exec_depend>mecanum_bot_controller</exec_depend>
+  
+  <exec_depend>ydlidar</exec_depend>
 
   <export>
     <build_type>ament_cmake</build_type>
