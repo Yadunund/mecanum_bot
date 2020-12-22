@@ -14,7 +14,7 @@
 
   <group>
   <node pkg="tf2_ros" exec="static_transform_publisher" name="base_link_to_laser4"
-	args="0.100 0.0 0.1924 0.0 0.0 0.0 /base_link /base_scan" />
+	args="0.100 0.0 0.1924 -1.57 0.0 0.0 /base_link /base_scan" />
   </group>
 
   <group>	  
