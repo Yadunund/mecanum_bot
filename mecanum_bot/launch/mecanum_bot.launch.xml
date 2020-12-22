@@ -1,0 +1,15 @@
+<?xml version='1.0' ?>
+
+<launch>
+
+  <group>
+    <include file="$(find-pkg-share mecanum_bot)/base_controller.launch.xml">
+    </include>
+  </group>
+
+  <group>
+    <include file="$(find-pkg-share ydliadr)/lidar.launch.xml">
+    </include>
+  </group>
+
+</launch>
