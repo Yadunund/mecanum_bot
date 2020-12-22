@@ -69,7 +69,7 @@ class BaseController(Node):
         self.get_logger().info(f"Setting wheel radius: {wheel_radius}")
 
         max_v = 0.7
-        max_w = 1.5
+        max_w = 0.7
 
         self.robot = Robot(wheel_base, track_width, wheel_radius, max_v, max_w)
 
