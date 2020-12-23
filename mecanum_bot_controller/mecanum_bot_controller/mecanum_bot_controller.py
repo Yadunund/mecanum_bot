@@ -68,8 +68,8 @@ class BaseController(Node):
             self.wheel_base = self.get_parameter('wheel_radius').value
         self.get_logger().info(f"Setting wheel radius: {wheel_radius}")
 
-        max_v = 0.7
-        max_w = 0.7
+        max_v = 0.8
+        max_w = 1.0
 
         self.robot = Robot(wheel_base, track_width, wheel_radius, max_v, max_w)
 
@@ -112,6 +112,8 @@ class BaseController(Node):
 
     def send_velocities(self):
         while True:
+            # print out current location
+            self.get_logger().info(f"Current pose: [{self.x},{self.y},{self.yaw}]")
             input = [self.desired_x, self.desired_y, self.desired_yaw]
             result = compute_motor_velocities(input, self.robot)
             self.get_logger().info(f"Computed wheel velocities: {result}")
@@ -131,6 +133,7 @@ class BaseController(Node):
                     dt = 0.025
                     dx = (self.vx * np.cos(self.yaw) - self.vy * np.sin(self.yaw)) * dt
                     dy = (self.vx * np.sin(self.yaw) + self.vy * np.cos(self.yaw)) * dt
+                    # Here we add some tolerance to the rotation
                     dth = self.vyaw * dt
                     self.x = self.x + dx
                     self.y = self.y + dy
@@ -164,9 +167,9 @@ class BaseController(Node):
                     odom.pose.pose.orientation.w = quat[3]
                     # set the velocity
                     odom.child_frame_id = "base_link"
-                    odom.twist.twist.linear.x = self.vx
-                    odom.twist.twist.linear.y = self.vy
-                    odom.twist.twist.angular.z = self.vyaw
+                    odom.twist.twist.linear.x = self.vx * self.robot.max_v
+                    odom.twist.twist.linear.y = self.vy * self.robot.max_v
+                    odom.twist.twist.angular.z = self.vyaw * self.robot.max_w
                     self.odom_pub.publish(odom)
 
                 except:
