@@ -55,30 +55,30 @@ dwb_controller:
   ros__parameters:
     use_sim_time: False
     debug_trajectory_details: True
-    min_vel_x: -1.0
-    min_vel_y: -1.0
-    max_vel_x: 1.0
-    max_vel_y: 1.0
+    min_vel_x: -2.0
+    min_vel_y: -2.0
+    max_vel_x: 2.0
+    max_vel_y: 2.0
     max_vel_theta: 2.0
-    min_speed_xy: -1.0
-    max_speed_xy: 1.0
+    min_speed_xy: -2.0
+    max_speed_xy: 2.0
     min_speed_theta: 0.7
     min_x_velocity_threshold: 0.001
     min_y_velocity_threshold: 0.001
     min_theta_velocity_threshold: 0.001
-    acc_lim_x: 2.5
-    acc_lim_y: 0.0
-    acc_lim_theta: 3.2
-    decel_lim_x: -2.5
-    decel_lim_y: 0.0
-    decel_lim_theta: -3.2
+    acc_lim_x: 5.0
+    acc_lim_y: 5.0
+    acc_lim_theta: 6.4
+    decel_lim_x: -5.0
+    decel_lim_y: -5.0
+    decel_lim_theta: -6.4
     vx_samples: 20
-    vy_samples: 5
+    vy_samples: 20
     vtheta_samples: 20
     sim_time: 1.7
     linear_granularity: 0.05
-    xy_goal_tolerance: 0.25
-    yaw_goal_tolerance: 0.1
+    xy_goal_tolerance: 0.30
+    yaw_goal_tolerance: 0.17
     transform_tolerance: 0.1
     critics: ["RotateToGoal", "Oscillation", "BaseObstacle", "GoalAlign", "PathAlign", "PathDist", "GoalDist"]
     BaseObstacle.scale: 0.02
