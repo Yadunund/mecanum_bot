@@ -1,11 +1,11 @@
 amcl:
   ros__parameters:
     use_sim_time: False
-    alpha1: 0.2
-    alpha2: 0.2
-    alpha3: 0.2
-    alpha4: 0.2
-    alpha5: 0.2
+    alpha1: 0.3
+    alpha2: 0.3
+    alpha3: 0.3
+    alpha4: 0.3
+    alpha5: 0.3
     base_frame_id: "base_footprint"
     beam_skip_distance: 0.5
     beam_skip_error_threshold: 0.9
@@ -14,14 +14,14 @@ amcl:
     global_frame_id: "map"
     lambda_short: 0.1
     laser_likelihood_max_dist: 2.0
-    laser_max_range: 100.0
+    laser_max_range: -1.0
     laser_min_range: -1.0
     laser_model_type: "likelihood_field"
     max_beams: 60
     max_particles: 2000
-    min_particles: 500
+    min_particles: 100
     odom_frame_id: "odom"
-    pf_err: 0.05
+    pf_err: 0.10
     pf_z: 0.99
     recovery_alpha_fast: 0.0
     recovery_alpha_slow: 0.0
@@ -55,14 +55,14 @@ dwb_controller:
   ros__parameters:
     use_sim_time: False
     debug_trajectory_details: True
-    min_vel_x: 0.0
-    min_vel_y: 0.0
-    max_vel_x: 0.70
-    max_vel_y: 0.70
-    max_vel_theta: 1.0
-    min_speed_xy: 0.0
-    max_speed_xy: 0.70
-    min_speed_theta: 0.0
+    min_vel_x: -1.0
+    min_vel_y: -1.0
+    max_vel_x: 1.0
+    max_vel_y: 1.0
+    max_vel_theta: 2.0
+    min_speed_xy: -1.0
+    max_speed_xy: 1.0
+    min_speed_theta: 0.7
     min_x_velocity_threshold: 0.001
     min_y_velocity_threshold: 0.001
     min_theta_velocity_threshold: 0.001
@@ -78,7 +78,8 @@ dwb_controller:
     sim_time: 1.7
     linear_granularity: 0.05
     xy_goal_tolerance: 0.25
-    transform_tolerance: 0.2
+    yaw_goal_tolerance: 0.1
+    transform_tolerance: 0.1
     critics: ["RotateToGoal", "Oscillation", "BaseObstacle", "GoalAlign", "PathAlign", "PathDist", "GoalDist"]
     BaseObstacle.scale: 0.02
     PathAlign.scale: 0.0
