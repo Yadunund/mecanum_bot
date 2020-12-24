@@ -1,11 +1,11 @@
 amcl:
   ros__parameters:
     use_sim_time: True
-    alpha1: 0.3
-    alpha2: 0.3
-    alpha3: 0.3
-    alpha4: 0.3
-    alpha5: 0.3
+    alpha1: 0.6
+    alpha2: 0.6
+    alpha3: 0.6
+    alpha4: 0.6
+    alpha5: 0.6
     base_frame_id: "base_footprint"
     beam_skip_distance: 0.5
     beam_skip_error_threshold: 0.9
