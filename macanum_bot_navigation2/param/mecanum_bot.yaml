@@ -102,7 +102,7 @@ controller_server:
     goal_checker:
       plugin: "nav2_controller::SimpleGoalChecker"
       xy_goal_tolerance: 0.25
-      yaw_goal_tolerance: 0.50
+      yaw_goal_tolerance: 0.55
       stateful: True
     # DWB parameters
     FollowPath:
@@ -112,12 +112,10 @@ controller_server:
       min_vel_y: -0.4
       max_vel_x: 0.4
       max_vel_y: 0.4
-      max_vel_theta: 0.7
+      max_vel_theta: 0.8
       min_speed_xy: -0.4
       max_speed_xy: 0.4
-      min_speed_theta: -0.7
-      # Add high threshold velocity for turtlebot 3 issue.
-      # https://github.com/ROBOTIS-GIT/turtlebot3_simulations/issues/75
+      min_speed_theta: -0.8
       acc_lim_x: 2.5
       acc_lim_y: 2.5
       acc_lim_theta: 3.2
