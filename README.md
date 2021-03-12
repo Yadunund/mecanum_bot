@@ -15,7 +15,7 @@ RAMU is a low-cost, wheel encoder-less, holonomic mobile base that is capable of
 
 RAMU's chassis is constructed from 20x20 aluminium extrusion members which are connected together with 3D printed joints. The motor, battery, electronics and sensors mounts are also 3D printed. The CAD is open sourced via Onshape and can be accessed [here](https://cad.onshape.com/documents/ce8bdc9f696707bc50d70932/w/ef0d68341801b7ffe4e012c3/e/bb0d1657fc848bdd1addb320).
 
-Documentation of the build process is found [here](https://yadunundvijay.com)
+Documentation of the build process is found [here](https://www.yadunundvijay.com/ramu)
 
 ### BOM
 1. [Raspberry Pi 3B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
