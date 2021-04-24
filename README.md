@@ -20,7 +20,7 @@ Documentation of the build process is found [here](https://www.yadunundvijay.com
 ### BOM
 1. [Raspberry Pi 3B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
 2. [Arduino Uno](https://store.arduino.cc/usa/arduino-uno-rev3)
-3. [DC geared motors x4](https://www.aliexpress.com/item/32999954820.html?spm=a2g0s.9042311.0.0.65cf4c4dNaN8tW)
+3. [DC geared motors 178RPM x4](https://www.aliexpress.com/item/32999954820.html?spm=a2g0s.9042311.0.0.65cf4c4dNaN8tW)
 4. [Motor drivers x2](https://www.aliexpress.com/item/4000099388630.html?spm=a2g0s.9042311.0.0.65cf4c4dNaN8tW)
 5. [Mecanum wheels 96mm diameter x4](https://www.aliexpress.com/item/4001118452729.html?spm=a2g0s.9042311.0.0.65cf4c4dNaN8tW)
 6. [2D lidar](https://www.aliexpress.com/item/4000018415971.html?spm=a2g0s.9042311.0.0.65cf4c4dNaN8tW)
