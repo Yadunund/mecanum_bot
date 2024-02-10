@@ -1,9 +1,7 @@
 <sdf version='1.7'>
   <model name='mecanum_bot'>
     <pose>0 0 0 0 -0 0</pose>
-        
-    <link name='base_footprint'/>
-    
+
     <link name='base_link'>
       <self_collide>false</self_collide>
       <inertial>
@@ -36,7 +34,7 @@
         </geometry>
       </visual>
     </link>
- 
+
     <link name='front_left_wheel'>
       <self_collide>false</self_collide>
       <pose>-0.060 0.116 -0.041 0 0 0</pose>
@@ -69,8 +67,10 @@
         <surface>
           <friction>
             <ode>
-              <mu>1.0</mu>
+              <mu>10.0</mu>
               <mu2>0.0</mu2>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
               <fdir1 ignition:expressed_in="base_link">1 -1 0</fdir1>
             </ode>
           </friction>
@@ -120,9 +120,11 @@
         <surface>
           <friction>
             <ode>
-              <mu>1.0</mu>
+              <mu>10.0</mu>
               <mu2>0.0</mu2>
-              <fdir1 ignition:expressed_in="base_link">1 -1 0</fdir1>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
+              <fdir1 ignition:expressed_in="base_link">1 1 0</fdir1>
             </ode>
           </friction>
           <contact>
@@ -171,9 +173,11 @@
         <surface>
           <friction>
             <ode>
-              <mu>1.0</mu>
+              <mu>10.0</mu>
               <mu2>0.0</mu2>
-              <fdir1 ignition:expressed_in="base_link">1 -1 0</fdir1>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
+              <fdir1 ignition:expressed_in="base_link">1 1 0</fdir1>
             </ode>
           </friction>
           <contact>
@@ -189,7 +193,7 @@
         </surface>
       </collision>
     </link>
-    
+
     <link name='rear_right_wheel'>
       <self_collide>false</self_collide>
       <pose>-0.310 -0.116 -0.041 0 0 -3.14</pose>
@@ -222,8 +226,10 @@
         <surface>
           <friction>
             <ode>
-              <mu>1.0</mu>
+              <mu>10.0</mu>
               <mu2>0.0</mu2>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
               <fdir1 ignition:expressed_in="base_link">1 -1 0</fdir1>
             </ode>
           </friction>
@@ -240,7 +246,7 @@
         </surface>
       </collision>
     </link>
-    
+
     <joint name='front_left_wheel_joint' type='revolute'>
       <parent>base_link</parent>
       <child>front_left_wheel</child>
@@ -276,7 +282,7 @@
         </limit>
       </axis>
     </joint>
-    
+
     <joint name='rear_right_wheel_joint' type='revolute'>
       <parent>base_link</parent>
       <child>rear_right_wheel</child>
@@ -288,6 +294,20 @@
         </limit>
       </axis>
     </joint>
-    
+
+    <plugin
+      filename="ignition-gazebo-mecanum-drive-system"
+      name="ignition::gazebo::systems::MecanumDrive">
+      <front_left_joint>front_left_wheel_joint</front_left_joint>
+      <front_right_joint>front_right_wheel_joint</front_right_joint>
+      <back_left_joint>rear_left_wheel_joint</back_left_joint>
+      <back_right_joint>rear_right_wheel_joint</back_right_joint>
+      <wheel_separation>0.232</wheel_separation>
+      <wheelbase>0.25</wheelbase>
+      <wheel_radius>0.045</wheel_radius>
+      <min_acceleration>-0.5</min_acceleration>
+      <max_acceleration>0.5</max_acceleration>
+    </plugin>
+
   </model>
 </sdf>
