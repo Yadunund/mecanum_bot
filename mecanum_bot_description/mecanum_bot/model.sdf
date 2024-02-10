@@ -1,8 +1,10 @@
-<sdf version='1.7'>
-  <model name='mecanum_bot'>
+<?xml version="1.0" ?>
+
+<sdf version="1.7">
+  <model name="mecanum_bot">
     <pose>0 0 0 0 -0 0</pose>
 
-    <link name='base_link'>
+    <link name="base_link">
       <self_collide>false</self_collide>
       <inertial>
         <pose>-0.1860000044107437 0.0 0.04050000384449959 0.0 0.0 0.0</pose>
@@ -24,7 +26,7 @@
           </box>
         </geometry>
       </collision>
-      <visual name='base_visual'>
+      <visual name="base_visual">
         <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
@@ -35,7 +37,7 @@
       </visual>
     </link>
 
-    <link name='front_left_wheel'>
+    <link name="front_left_wheel">
       <self_collide>false</self_collide>
       <pose>-0.060 0.116 -0.041 0 0 0</pose>
       <inertial>
@@ -49,7 +51,7 @@
           <izz>0.0001</izz>
         </inertia>
       </inertial>
-      <visual name='front_left_wheel_visual'>
+      <visual name="front_left_wheel_visual">
         <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
@@ -58,7 +60,7 @@
           </mesh>
         </geometry>
       </visual>
-      <collision name='front_left_wheel_collision'>
+      <collision name="front_left_wheel_collision">
         <geometry>
           <sphere>
             <radius>0.05</radius>
@@ -88,7 +90,7 @@
       </collision>
     </link>
 
-    <link name='rear_left_wheel'>
+    <link name="rear_left_wheel">
       <self_collide>false</self_collide>
       <pose>-0.310 0.116 -0.041 0 0 0</pose>
       <inertial>
@@ -102,7 +104,7 @@
           <izz>0.0001</izz>
         </inertia>
       </inertial>
-      <visual name='rear_left_wheel_visual'>
+      <visual name="rear_left_wheel_visual">
         <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
@@ -111,7 +113,7 @@
           </mesh>
         </geometry>
       </visual>
-      <collision name='rear_left_wheel_collision'>
+      <collision name="rear_left_wheel_collision">
         <geometry>
           <sphere>
             <radius>0.05</radius>
@@ -141,7 +143,7 @@
       </collision>
     </link>
 
-    <link name='front_right_wheel'>
+    <link name="front_right_wheel">
       <self_collide>false</self_collide>
       <pose>-0.060 -0.116 -0.041 0 0 -3.14</pose>
       <inertial>
@@ -155,7 +157,7 @@
           <izz>0.0001</izz>
         </inertia>
       </inertial>
-      <visual name='front_right_wheel_visual'>
+      <visual name="front_right_wheel_visual">
         <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
@@ -164,7 +166,7 @@
           </mesh>
         </geometry>
       </visual>
-      <collision name='front_right_wheel_collision'>
+      <collision name="front_right_wheel_collision">
         <geometry>
           <sphere>
             <radius>0.05</radius>
@@ -194,7 +196,7 @@
       </collision>
     </link>
 
-    <link name='rear_right_wheel'>
+    <link name="rear_right_wheel">
       <self_collide>false</self_collide>
       <pose>-0.310 -0.116 -0.041 0 0 -3.14</pose>
       <inertial>
@@ -208,7 +210,7 @@
           <izz>0.0001</izz>
         </inertia>
       </inertial>
-      <visual name='rear_right_wheel_visual'>
+      <visual name="rear_right_wheel_visual">
         <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
@@ -217,7 +219,7 @@
           </mesh>
         </geometry>
       </visual>
-      <collision name='rear_right_wheel_collision'>
+      <collision name="rear_right_wheel_collision">
         <geometry>
           <sphere>
             <radius>0.05</radius>
@@ -247,7 +249,66 @@
       </collision>
     </link>
 
-    <joint name='front_left_wheel_joint' type='revolute'>
+    <link name="base_scan">
+      <inertial>
+        <pose>-0.085 0. 0.1924 0 0 0</pose>
+        <inertia>
+          <ixx>0.001</ixx>
+          <ixy>0.000</ixy>
+          <ixz>0.000</ixz>
+          <iyy>0.001</iyy>
+          <iyz>0.000</iyz>
+          <izz>0.001</izz>
+        </inertia>
+        <mass>0.125</mass>
+      </inertial>
+      <collision name="lidar_sensor_collision">
+        <pose>-0.085 -0.0036665257066488266 0.17515000043 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.06041127070784569 0.09593304991722107 0.0502999983727932</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="lidar_sensor_visual">
+        <pose>-0.085 0. 0.1924 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://mecanum_bot/meshes/ydlidar_x2l.obj</uri>
+            <scale>1.0 1.0 1.0</scale>
+          </mesh>
+        </geometry>
+      </visual>
+      <sensor name="ydlidar_x2l" type="gpu_lidar">
+        <always_on>true</always_on>
+        <pose>-0.085 0. 0.1924 0 0 0</pose>
+        <topic>scan</topic>
+        <update_rate>8</update_rate>
+        <visualize>true</visualize>
+        <lidar>
+          <scan>
+            <horizontal>
+              <samples>360</samples>
+              <resolution>1.000000</resolution>
+              <min_angle>-3.14</min_angle>
+              <max_angle>3.14</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.08</min>
+            <max>12.0</max>
+            <resolution>0.015000</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.01</stddev>
+          </noise>
+        </lidar>
+      </sensor>
+    </link>
+
+    <joint name="front_left_wheel_joint" type="revolute">
       <parent>base_link</parent>
       <child>front_left_wheel</child>
       <axis>
@@ -259,7 +320,7 @@
       </axis>
     </joint>
 
-    <joint name='rear_left_wheel_joint' type='revolute'>
+    <joint name="rear_left_wheel_joint" type="revolute">
       <parent>base_link</parent>
       <child>rear_left_wheel</child>
       <axis>
@@ -271,7 +332,7 @@
       </axis>
     </joint>
 
-    <joint name='front_right_wheel_joint' type='revolute'>
+    <joint name="front_right_wheel_joint" type="revolute">
       <parent>base_link</parent>
       <child>front_right_wheel</child>
       <axis>
@@ -283,7 +344,7 @@
       </axis>
     </joint>
 
-    <joint name='rear_right_wheel_joint' type='revolute'>
+    <joint name="rear_right_wheel_joint" type="revolute">
       <parent>base_link</parent>
       <child>rear_right_wheel</child>
       <axis>
@@ -293,6 +354,11 @@
           <upper>1.79769e+308</upper>
         </limit>
       </axis>
+    </joint>
+
+    <joint name="base_scan_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>base_scan</child>
     </joint>
 
     <plugin
