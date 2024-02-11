@@ -2,7 +2,8 @@
 
 <sdf version="1.7">
   <model name="mecanum_bot">
-    <pose>0 0 0 0 -0 0</pose>
+    <link name="base_footprint">
+    </link>
 
     <link name="base_link">
       <self_collide>false</self_collide>
@@ -361,6 +362,13 @@
       <child>base_scan</child>
     </joint>
 
+    <joint name="base_link_joint" type="fixed">
+      <parent>base_footprint</parent>
+      <child>base_link</child>
+      <!-- pose>0.195 0 0.089 0 0 0</pose -->
+    </joint>
+
+    <!-- The MecanumDrive plugin has not implemented any odometry publishing logic. -->
     <plugin
       filename="ignition-gazebo-mecanum-drive-system"
       name="ignition::gazebo::systems::MecanumDrive">
@@ -370,9 +378,28 @@
       <back_right_joint>rear_right_wheel_joint</back_right_joint>
       <wheel_separation>0.232</wheel_separation>
       <wheelbase>0.25</wheelbase>
-      <wheel_radius>0.045</wheel_radius>
+      <wheel_radius>0.048</wheel_radius>
       <min_acceleration>-0.5</min_acceleration>
       <max_acceleration>0.5</max_acceleration>
+    </plugin>
+
+    <!--
+      Default <odom_frame> is `{name_of_model}/odom`.
+      Default <odom_topic> is `/model/{name_of_model}/odometry`.
+      Default <odom_covariance_topic> is `/model/{name_of_model}/odometry_with_covariance'
+      Default <tf_topic> is `/model/{name_of_model}/pose'
+    -->
+    <plugin
+      filename="ignition-gazebo-odometry-publisher-system"
+      name="ignition::gazebo::systems::OdometryPublisher">
+      <robot_base_frame>base_footprint</robot_base_frame>
+      <odom_publish_frequency>50</odom_publish_frequency>
+      <gaussian_noise>0.01</gaussian_noise>
+    </plugin>
+
+    <plugin
+      filename="ignition-gazebo-joint-state-publisher-system"
+      name="ignition::gazebo::systems::JointStatePublisher">
     </plugin>
 
   </model>
