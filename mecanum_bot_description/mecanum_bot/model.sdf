@@ -282,6 +282,7 @@
       </visual>
       <sensor name="ydlidar_x2l" type="gpu_lidar">
         <always_on>true</always_on>
+        <gz_frame_id>base_scan</gz_frame_id>
         <pose>-0.085 0. 0.1924 0 0 0</pose>
         <topic>scan</topic>
         <update_rate>8</update_rate>
@@ -360,12 +361,13 @@
     <joint name="base_scan_joint" type="fixed">
       <parent>base_link</parent>
       <child>base_scan</child>
+      <pose>-0.085 0. 0.1924 0 0 0</pose>
     </joint>
 
     <joint name="base_link_joint" type="fixed">
       <parent>base_footprint</parent>
       <child>base_link</child>
-      <!-- pose>0.195 0 0.089 0 0 0</pose -->
+      <pose>0.195 0 0.089 0 0 0</pose>
     </joint>
 
     <!-- The MecanumDrive plugin has not implemented any odometry publishing logic. -->
