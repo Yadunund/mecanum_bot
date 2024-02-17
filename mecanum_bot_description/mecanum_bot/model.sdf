@@ -32,7 +32,7 @@
         <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://mecanum_bot/meshes/mecanum_bot_chassis.obj</uri>
+            <uri>package://mecanum_bot_description/mecanum_bot/meshes/mecanum_bot_chassis.obj</uri>
             <scale>1 1 1</scale>
           </mesh>
         </geometry>
@@ -57,7 +57,7 @@
         <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://mecanum_bot/meshes/mecanum_bot_wheel.obj</uri>
+            <uri>package://mecanum_bot_description/mecanum_bot/meshes/mecanum_bot_wheel.obj</uri>
             <scale>1 1 1</scale>
           </mesh>
         </geometry>
@@ -110,7 +110,7 @@
         <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://mecanum_bot/meshes/mecanum_bot_wheel.obj</uri>
+            <uri>package://mecanum_bot_description/mecanum_bot/meshes/mecanum_bot_wheel.obj</uri>
             <scale>1 1 1</scale>
           </mesh>
         </geometry>
@@ -163,7 +163,7 @@
         <pose>0 0 0 0 0 -3.14</pose>
         <geometry>
           <mesh>
-            <uri>model://mecanum_bot/meshes/mecanum_bot_wheel.obj</uri>
+            <uri>package://mecanum_bot_description/mecanum_bot/meshes/mecanum_bot_wheel.obj</uri>
             <scale>1 1 1</scale>
           </mesh>
         </geometry>
@@ -216,7 +216,7 @@
         <pose>0 0 0 0 0 -3.14</pose>
         <geometry>
           <mesh>
-            <uri>model://mecanum_bot/meshes/mecanum_bot_wheel.obj</uri>
+            <uri>package://mecanum_bot_description/mecanum_bot/meshes/mecanum_bot_wheel.obj</uri>
             <scale>1 1 1</scale>
           </mesh>
         </geometry>
@@ -274,7 +274,7 @@
       <visual name="lidar_sensor_visual">
         <geometry>
           <mesh>
-            <uri>model://mecanum_bot/meshes/ydlidar_x2l.obj</uri>
+            <uri>package://mecanum_bot_description/mecanum_bot/meshes/ydlidar_x2l.obj</uri>
             <scale>1.0 1.0 1.0</scale>
           </mesh>
         </geometry>
