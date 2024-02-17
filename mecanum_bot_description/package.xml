@@ -3,11 +3,17 @@
 <package format="3">
   <name>mecanum_bot_description</name>
   <version>0.0.0</version>
-  <description>SDF model of the robot</description>
+  <description>SDF model of mecanum_bot</description>
   <maintainer email="yadunund@gmail.com">Yadunund</maintainer>
   <license>Apache License 2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>ignition-fortress</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>ros_gz_bridge</exec_depend>
+  <exec_depend>rviz2</exec_depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
