@@ -65,7 +65,7 @@ Visualization Manager:
           Value: true
         front_right_wheel:
           Value: true
-        mecanum_bot/odom:
+        odom:
           Value: true
         rear_left_wheel:
           Value: true
@@ -77,7 +77,7 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        mecanum_bot/odom:
+        odom:
           base_footprint:
             base_link:
               base_scan:
@@ -189,7 +189,7 @@ Visualization Manager:
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: mecanum_bot/odom
+    Fixed Frame: odom
     Frame Rate: 30
   Name: root
   Tools:

@@ -74,6 +74,7 @@ def generate_launch_description():
             (joint_state_gz_topic, 'joint_states'),
             (link_pose_gz_topic, '/tf'),
             (link_pose_gz_topic + '_static', '/tf_static'),
+            (gz_topic + '/odometry', '/wheels/odom'),\
             (gz_topic + '/cmd_vel', '/cmd_vel'),
         ],
         parameters=[{'qos_overrides./tf_static.publisher.durability': 'transient_local'}],

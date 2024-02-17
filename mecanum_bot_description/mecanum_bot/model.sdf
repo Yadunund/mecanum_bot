@@ -382,7 +382,6 @@
     </plugin>
 
     <!--
-      Default <odom_frame> is `{name_of_model}/odom`.
       Default <odom_topic> is `/model/{name_of_model}/odometry`.
       Default <odom_covariance_topic> is `/model/{name_of_model}/odometry_with_covariance'
       Default <tf_topic> is `/model/{name_of_model}/pose'
@@ -391,6 +390,7 @@
       filename="ignition-gazebo-odometry-publisher-system"
       name="ignition::gazebo::systems::OdometryPublisher">
       <robot_base_frame>base_footprint</robot_base_frame>
+      <odom_frame>odom</odom_frame>
       <odom_publish_frequency>50</odom_publish_frequency>
       <gaussian_noise>0.1</gaussian_noise>
     </plugin>
