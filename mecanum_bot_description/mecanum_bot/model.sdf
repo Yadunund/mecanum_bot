@@ -1,0 +1,404 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.7">
+  <model name="mecanum_bot">
+
+    <link name="base_footprint">
+    </link>
+
+    <link name="base_link">
+      <self_collide>false</self_collide>
+      <inertial>
+        <pose>-0.0010000044107437 0.0 0.04050000384449959 0.0 0.0 0.0</pose>
+        <inertia>
+          <ixx>0.05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.05</iyy>
+          <iyz>0</iyz>
+          <izz>0.05</izz>
+        </inertia>
+        <mass>5</mass>
+      </inertial>
+      <collision name ="Cube">
+        <pose>-0.0010000044107437 0.0 0.04050000384449959 0.0 0.0 0.0</pose>
+        <geometry>
+          <box>
+            <size>0.39200000195503235 0.1939999908208847 0.219000001168251038</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="base_visual">
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>package://mecanum_bot_description/mecanum_bot/meshes/mecanum_bot_chassis.obj</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="front_left_wheel">
+      <self_collide>false</self_collide>
+      <pose>0.125 0.117 -0.041 0 0 0</pose>
+      <inertial>
+        <mass>0.2</mass>
+        <inertia>
+          <ixx>0.0001</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0001</iyy>
+          <iyz>0</iyz>
+          <izz>0.0001</izz>
+        </inertia>
+      </inertial>
+      <visual name="front_left_wheel_visual">
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>package://mecanum_bot_description/mecanum_bot/meshes/mecanum_bot_wheel.obj</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="front_left_wheel_collision">
+        <geometry>
+          <sphere>
+            <radius>0.05</radius>
+          </sphere>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>10.0</mu>
+              <mu2>0.0</mu2>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
+              <fdir1 ignition:expressed_in="base_link">1 -1 0</fdir1>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+5</kp>
+              <kd>1</kd>
+              <max_vel>0.01</max_vel>
+              <min_depth>0.0001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+
+    <link name="rear_left_wheel">
+      <self_collide>false</self_collide>
+      <pose>-0.125 0.117 -0.041 0 0 0</pose>
+      <inertial>
+        <mass>0.2</mass>
+        <inertia>
+          <ixx>0.0001</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0001</iyy>
+          <iyz>0</iyz>
+          <izz>0.0001</izz>
+        </inertia>
+      </inertial>
+      <visual name="rear_left_wheel_visual">
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>package://mecanum_bot_description/mecanum_bot/meshes/mecanum_bot_wheel.obj</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="rear_left_wheel_collision">
+        <geometry>
+          <sphere>
+            <radius>0.05</radius>
+          </sphere>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>10.0</mu>
+              <mu2>0.0</mu2>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
+              <fdir1 ignition:expressed_in="base_link">1 1 0</fdir1>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+5</kp>
+              <kd>1</kd>
+              <max_vel>0.01</max_vel>
+              <min_depth>0.0001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+
+    <link name="front_right_wheel">
+      <self_collide>false</self_collide>
+      <pose>0.125 -0.117 -0.041 0 0 0</pose>
+      <inertial>
+        <mass>0.2</mass>
+        <inertia>
+          <ixx>0.0001</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0001</iyy>
+          <iyz>0</iyz>
+          <izz>0.0001</izz>
+        </inertia>
+      </inertial>
+      <visual name="front_right_wheel_visual">
+        <pose>0 0 0 0 0 -3.14</pose>
+        <geometry>
+          <mesh>
+            <uri>package://mecanum_bot_description/mecanum_bot/meshes/mecanum_bot_wheel.obj</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="front_right_wheel_collision">
+        <geometry>
+          <sphere>
+            <radius>0.05</radius>
+          </sphere>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>10.0</mu>
+              <mu2>0.0</mu2>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
+              <fdir1 ignition:expressed_in="base_link">1 1 0</fdir1>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+5</kp>
+              <kd>1</kd>
+              <max_vel>0.01</max_vel>
+              <min_depth>0.0001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+
+    <link name="rear_right_wheel">
+      <self_collide>false</self_collide>
+      <pose>-0.125 -0.117 -0.041 0 0 0</pose>
+      <inertial>
+        <mass>0.2</mass>
+        <inertia>
+          <ixx>0.0001</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0001</iyy>
+          <iyz>0</iyz>
+          <izz>0.0001</izz>
+        </inertia>
+      </inertial>
+      <visual name="rear_right_wheel_visual">
+        <pose>0 0 0 0 0 -3.14</pose>
+        <geometry>
+          <mesh>
+            <uri>package://mecanum_bot_description/mecanum_bot/meshes/mecanum_bot_wheel.obj</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="rear_right_wheel_collision">
+        <geometry>
+          <sphere>
+            <radius>0.05</radius>
+          </sphere>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>10.0</mu>
+              <mu2>0.0</mu2>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
+              <fdir1 ignition:expressed_in="base_link">1 -1 0</fdir1>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+5</kp>
+              <kd>1</kd>
+              <max_vel>0.01</max_vel>
+              <min_depth>0.0001</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+
+    <link name="base_scan">
+      <pose>0.1 0. 0.1924 0 0 0</pose>
+      <inertial>
+        <inertia>
+          <ixx>0.001</ixx>
+          <ixy>0.000</ixy>
+          <ixz>0.000</ixz>
+          <iyy>0.001</iyy>
+          <iyz>0.000</iyz>
+          <izz>0.001</izz>
+        </inertia>
+        <mass>0.125</mass>
+      </inertial>
+      <collision name="lidar_sensor_collision">
+        <geometry>
+          <box>
+            <size>0.06041127070784569 0.09593304991722107 0.0502999983727932</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="lidar_sensor_visual">
+        <geometry>
+          <mesh>
+            <uri>package://mecanum_bot_description/mecanum_bot/meshes/ydlidar_x2l.obj</uri>
+            <scale>1.0 1.0 1.0</scale>
+          </mesh>
+        </geometry>
+      </visual>
+      <sensor name="ydlidar_x2l" type="gpu_lidar">
+        <always_on>true</always_on>
+        <gz_frame_id>base_scan</gz_frame_id>
+        <topic>scan</topic>
+        <update_rate>8</update_rate>
+        <visualize>true</visualize>
+        <lidar>
+          <scan>
+            <horizontal>
+              <samples>360</samples>
+              <resolution>1.000000</resolution>
+              <min_angle>-3.14</min_angle>
+              <max_angle>3.14</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.08</min>
+            <max>12.0</max>
+            <resolution>0.015000</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.01</stddev>
+          </noise>
+        </lidar>
+      </sensor>
+    </link>
+
+    <joint name="front_left_wheel_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>front_left_wheel</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1.79769e+308</lower>
+          <upper>1.79769e+308</upper>
+        </limit>
+      </axis>
+    </joint>
+
+    <joint name="rear_left_wheel_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>rear_left_wheel</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1.79769e+308</lower>
+          <upper>1.79769e+308</upper>
+        </limit>
+      </axis>
+    </joint>
+
+    <joint name="front_right_wheel_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>front_right_wheel</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1.79769e+308</lower>
+          <upper>1.79769e+308</upper>
+        </limit>
+      </axis>
+    </joint>
+
+    <joint name="rear_right_wheel_joint" type="revolute">
+      <parent>base_link</parent>
+      <child>rear_right_wheel</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1.79769e+308</lower>
+          <upper>1.79769e+308</upper>
+        </limit>
+      </axis>
+    </joint>
+
+    <joint name="base_scan_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>base_scan</child>
+    </joint>
+
+    <joint name="base_link_joint" type="fixed">
+      <parent>base_footprint</parent>
+      <child>base_link</child>
+    </joint>
+
+    <!-- The MecanumDrive plugin has not implemented any odometry publishing logic. -->
+    <plugin
+      filename="ignition-gazebo-mecanum-drive-system"
+      name="ignition::gazebo::systems::MecanumDrive">
+      <front_left_joint>front_left_wheel_joint</front_left_joint>
+      <front_right_joint>front_right_wheel_joint</front_right_joint>
+      <back_left_joint>rear_left_wheel_joint</back_left_joint>
+      <back_right_joint>rear_right_wheel_joint</back_right_joint>
+      <wheel_separation>0.234</wheel_separation>
+      <wheelbase>0.25</wheelbase>
+      <wheel_radius>0.048</wheel_radius>
+      <min_acceleration>-0.5</min_acceleration>
+      <max_acceleration>0.5</max_acceleration>
+    </plugin>
+
+    <!--
+      Default <odom_topic> is `/model/{name_of_model}/odometry`.
+      Default <odom_covariance_topic> is `/model/{name_of_model}/odometry_with_covariance'
+      Default <tf_topic> is `/model/{name_of_model}/pose'
+    -->
+    <plugin
+      filename="ignition-gazebo-odometry-publisher-system"
+      name="ignition::gazebo::systems::OdometryPublisher">
+      <robot_base_frame>base_footprint</robot_base_frame>
+      <odom_frame>odom</odom_frame>
+      <odom_publish_frequency>50</odom_publish_frequency>
+      <gaussian_noise>0.1</gaussian_noise>
+    </plugin>
+
+    <plugin
+      filename="ignition-gazebo-joint-state-publisher-system"
+      name="ignition::gazebo::systems::JointStatePublisher">
+    </plugin>
+
+  </model>
+</sdf>

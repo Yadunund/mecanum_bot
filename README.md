@@ -4,7 +4,7 @@
 
 RAMU is a low-cost, wheel encoder-less, holonomic mobile base that is capable of autonomous navigation. RAMU is powered by ROS 2 and Navigation 2 systems. This repository contains some information on RAMU along with ROS 2 packages and launch files to get RAMU up and running.
 
-#### Click the image below to watch RAMU autonomously navigate in an indoor environment. 
+#### Click the image below to watch RAMU autonomously navigate in an indoor environment.
 
 [![](docs/media/autonomous_navigation.jpeg)](https://www.youtube.com/watch?v=9J7-lWX2Y_A&feature=youtu.be)
 
@@ -54,7 +54,7 @@ RAMU's Arduino receives motor velocities in range [0,255] via serial from the RP
 "[w1, w2, w3, w4]"
 ```
 
-where w1, w2, w3, w4 are the velocities of the wheels as seen in the arrangement above. 
+where w1, w2, w3, w4 are the velocities of the wheels as seen in the arrangement above.
 
 
 The code to be uploaded to the arduino is located at `arduino/MotorDriver`.
@@ -92,11 +92,27 @@ source /opt/ros/foxy/setup.bash
 colcon build --parallel-workers 1
 ```
 
+## Simulation
+![](./docs/media/simulation.png)
+
+The `mecanum_bot` can be fully simulated with the latest [Gazebo](https://gazebosim.org/home).
+
+To launch a simple simulation world with the robot model loaded,
+```bash
+cd ~/ws_mecanum_bot
+source install/setup.bash
+ros2 launch mecanum_bot_description view_robot.launch.py
+```
+> Note: Press the Play button in the bottom left corner of the Gazebo GUI to start the simulation.
+
+The simulated robot can be teleoperated by publishing `Twist` messages over `/cmd_vel`.
+Lidar data is published over `/scan` and odometry over `/odom`.
+
 ## Running stuff and having fun
 
 With the Arduino code uploaded and the RPi setup, we have various launch commands to get RAMU running.
 
-First launch the lidar node 
+First launch the lidar node
 ```
 cd ~/ws_mecanum_bot
 source install/setup.bash
