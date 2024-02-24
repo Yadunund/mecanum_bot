@@ -68,7 +68,10 @@ def generate_launch_description():
             # Velocity and odometry (Gazebo -> ROS2)
             gz_topic + '/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist',
             gz_topic + '/odometry@nav_msgs/msg/Odometry@gz.msgs.Odometry',
-            '/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan'
+            '/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan',
+            '/rgbd_camera/image@sensor_msgs/msg/Image@gz.msgs.Image',
+            '/rgbd_camera/camera_info@sensor_msgs/msg/CameraInfo@gz.msgs.CameraInfo',
+            '/rgbd_camera/depth_image@sensor_msgs/msg/Image@gz.msgs.Image',
         ],
         remappings=[
             (joint_state_gz_topic, 'joint_states'),
@@ -76,6 +79,9 @@ def generate_launch_description():
             (link_pose_gz_topic + '_static', '/tf_static'),
             (gz_topic + '/odometry', '/wheels/odom'),\
             (gz_topic + '/cmd_vel', '/cmd_vel'),
+            ('/rgbd_camera/image', '/oak/rgb/image_raw'),
+            ('/rgbd_camera/camera_info', '/oak/rgb/camera_info'),
+            ('/rgbd_camera/depth_image', '/oak/stereo/image_raw'),
         ],
         parameters=[{'qos_overrides./tf_static.publisher.durability': 'transient_local'}],
         output='screen'
