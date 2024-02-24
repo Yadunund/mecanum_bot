@@ -77,7 +77,7 @@ def generate_launch_description():
             (joint_state_gz_topic, 'joint_states'),
             (link_pose_gz_topic, '/tf'),
             (link_pose_gz_topic + '_static', '/tf_static'),
-            (gz_topic + '/odometry', '/wheels/odom'),\
+            (gz_topic + '/odometry', '/wheel_odom'),\
             (gz_topic + '/cmd_vel', '/cmd_vel'),
             ('/rgbd_camera/image', '/oak/rgb/image_raw'),
             ('/rgbd_camera/camera_info', '/oak/rgb/camera_info'),

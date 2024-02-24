@@ -69,7 +69,7 @@ Visualization Manager:
           Value: true
         oak-d_frame:
           Value: true
-        odom:
+        wheel_odom:
           Value: true
         rear_left_wheel:
           Value: true
@@ -81,7 +81,7 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        odom:
+        wheel_odom:
           base_footprint:
             base_link:
               base_scan:
@@ -228,7 +228,7 @@ Visualization Manager:
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: odom
+    Fixed Frame: wheel_odom
     Frame Rate: 30
   Name: root
   Tools:
