@@ -137,14 +137,14 @@ To map an environment using `Cartographer`,
 ```
 cd ~/ws_mecanum_bot
 source install/setup.bash
-ros2 launch mecanum_bot_cartographer cartographer.launch.xml
+ros2 launch mecanum_bot_bringup cartographer.launch.xml
 ```
 
-Save the map files into `mecanum_bot_navigation2/map/` as `map.pgm` and `map.yaml`.
+Save the map files into `mecanum_bot_bringup/map/` as `map.pgm` and `map.yaml`.
 
 To navigate autonomously,
 ```
 cd ~/ws_mecanum_bot
 source install/setup.bash
-ros2 launch mecanum_bot_navigation2 navigation2.launch.xml
+ros2 launch mecanum_bot_bringup navigation2.launch.xml
 ```

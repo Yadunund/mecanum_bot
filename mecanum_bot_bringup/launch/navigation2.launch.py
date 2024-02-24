@@ -78,7 +78,7 @@ def generate_launch_description():
     declare_map_yaml_cmd = DeclareLaunchArgument(
         'map',
         default_value=os.path.join(
-            get_package_share_directory('mecanum_bot_navigation2'),
+            get_package_share_directory('mecanum_bot_bringup'),
             'map',
             'map.yaml'),
         description='Full path to map file to load')
@@ -91,7 +91,7 @@ def generate_launch_description():
     declare_params_file_cmd = DeclareLaunchArgument(
         'params_file',
         default_value=os.path.join(
-          get_package_share_directory('mecanum_bot_navigation2'),
+          get_package_share_directory('mecanum_bot_bringup'),
           'param',
           'mecanum_bot.yaml'),
         description='Full path to the ROS2 parameters file to use for all launched nodes')
@@ -183,4 +183,3 @@ def generate_launch_description():
     ld.add_action(bringup_cmd)
 
     return ld
-
