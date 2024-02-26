@@ -123,28 +123,28 @@ Next launch the `base_controller` and `TF2` publishers
 ```
 cd ~/ws_mecanum_bot
 source install/setup.bash
-ros2 launch mecanum_bot mecanum_bot.launch.xml
+ros2 launch mecanum_bot_bringup mecanum_bot.launch.xml
 ```
 
 RAMU can now be teleoperated by publishing `geometry_msgs/Twist` messages over `/cmd_vel` topic. From a second machine with a joystick plugged in,
 ```
 cd ~/ws_mecanum_bot
 source install/setup.bash
-ros2 launch mecanum_bot joystick_teleop.launch.xml
+ros2 launch mecanum_bot_bringup joystick_teleop.launch.xml
 ```
 
 To map an environment using `Cartographer`,
 ```
 cd ~/ws_mecanum_bot
 source install/setup.bash
-ros2 launch mecanum_bot_cartographer cartographer.launch.xml
+ros2 launch mecanum_bot_bringup cartographer.launch.xml
 ```
 
-Save the map files into `mecanum_bot_navigation2/map/` as `map.pgm` and `map.yaml`.
+Save the map files into `mecanum_bot_bringup/map/` as `map.pgm` and `map.yaml`.
 
 To navigate autonomously,
 ```
 cd ~/ws_mecanum_bot
 source install/setup.bash
-ros2 launch mecanum_bot_navigation2 navigation2.launch.xml
+ros2 launch mecanum_bot_bringup navigation2.launch.xml
 ```

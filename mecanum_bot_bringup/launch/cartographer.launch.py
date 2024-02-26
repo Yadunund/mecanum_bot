@@ -26,17 +26,17 @@ from launch.substitutions import ThisLaunchFileDir
 
 def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
-    mecanum_bot_cartographer_prefix = get_package_share_directory('mecanum_bot_cartographer')
+    mecanum_bot_bringup_prefix = get_package_share_directory('mecanum_bot_bringup')
     cartographer_config_dir = LaunchConfiguration('cartographer_config_dir', default=os.path.join(
-                                                  mecanum_bot_cartographer_prefix, 'config'))
+                                                  mecanum_bot_bringup_prefix, 'config'))
     configuration_basename = LaunchConfiguration('configuration_basename',
                                                  default='mecanum_bot_lds_2d.lua')
 
     resolution = LaunchConfiguration('resolution', default='0.05')
     publish_period_sec = LaunchConfiguration('publish_period_sec', default='1.0')
 
-    rviz_config_dir = os.path.join(get_package_share_directory('mecanum_bot_cartographer'),
-                                   'rviz', 'mecanum_bot_cartographer.rviz')
+    rviz_config_dir = os.path.join(get_package_share_directory('mecanum_bot_bringup'),
+                                   'rviz', 'mecanum_bot_bringup.rviz')
 
     return LaunchDescription([
         DeclareLaunchArgument(

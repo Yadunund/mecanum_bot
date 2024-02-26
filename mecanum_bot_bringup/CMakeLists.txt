@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.5)
-project(mecanum_bot_navigation2)
+project(mecanum_bot_bringup)
 
 find_package(ament_cmake REQUIRED)
 
 install(
-  DIRECTORY launch map param rviz
+  DIRECTORY config launch map rviz
   DESTINATION share/${PROJECT_NAME}
 )
 
