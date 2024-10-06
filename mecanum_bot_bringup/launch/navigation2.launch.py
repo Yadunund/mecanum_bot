@@ -93,7 +93,7 @@ def generate_launch_description():
         default_value=os.path.join(
           get_package_share_directory('mecanum_bot_bringup'),
           'param',
-          'mecanum_bot.yaml'),
+          'mecanum_bot_nav2.yaml'),
         description='Full path to the ROS2 parameters file to use for all launched nodes')
 
     default_nav_through_poses_bt_xml_cmd = DeclareLaunchArgument(

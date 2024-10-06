@@ -1,0 +1,104 @@
+material floor_1_Diffuse
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture blue_linoleum_high_contrast.png
+			}
+		}
+	}
+}
+material floor_2_Diffuse
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture concrete2.png
+			}
+		}
+	}
+}
+material floor_3_Diffuse
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture blue_linoleum_high_contrast.png
+			}
+		}
+	}
+}
+material floor_4_Diffuse
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture black_concrete.png
+			}
+		}
+	}
+}
+material wall_1_Diffuse
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture wall_white.png
+			}
+		}
+	}
+}
+material wall_2_Diffuse
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture wall_white.png
+			}
+		}
+	}
+}
+material wall_3_Diffuse
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture wall_white.png
+			}
+		}
+	}
+}
+material wall_4_Diffuse
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture blue_linoleum_high_contrast.png
+			}
+		}
+	}
+}

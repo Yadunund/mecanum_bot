@@ -1,0 +1,692 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.7">
+  <world name="office">
+    <physics name="1ms" type="ignored">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+    <plugin
+      filename="ignition-gazebo-physics-system"
+      name="ignition::gazebo::systems::Physics">
+    </plugin>
+    <plugin
+      filename="libignition-gazebo-sensors-system.so"
+      name="ignition::gazebo::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+    <plugin
+      filename="ignition-gazebo-user-commands-system"
+      name="ignition::gazebo::systems::UserCommands">
+    </plugin>
+    <plugin
+      filename="ignition-gazebo-scene-broadcaster-system"
+      name="ignition::gazebo::systems::SceneBroadcaster">
+    </plugin>
+    <plugin
+      filename="libignition-gazebo-contact-system.so"
+      name="ignition::gazebo::systems::Contact">
+    </plugin>
+
+    <scene>
+      <ambient>1 1 1</ambient>
+      <background>0.8 0.8 0.8</background>
+      <grid>false</grid>
+    </scene>
+
+    <gui fullscreen="0">
+      <window>
+        <width>1000</width>
+        <height>845</height>
+        <style material_theme="Light" material_primary="DeepOrange" material_accent="LightBlue" toolbar_color_light="#f3f3f3" toolbar_text_color_light="#111111" toolbar_color_dark="#414141" toolbar_text_color_dark="#f3f3f3" plugin_toolbar_color_light="#bbdefb" plugin_toolbar_text_color_light="#111111" plugin_toolbar_color_dark="#607d8b" plugin_toolbar_text_color_dark="#eeeeee" />
+        <menus>
+          <drawer default="false">
+          </drawer>
+        </menus>
+      </window>
+      <plugin filename="GzScene3D" name="3D View">
+        <ignition-gui>
+          <title>3D View</title>
+          <property type="bool" key="showTitleBar">false</property>
+          <property type="string" key="state">docked</property>
+        </ignition-gui>
+        <engine>ogre2</engine>
+        <scene>scene</scene>
+        <ambient_light>0.4 0.4 0.4</ambient_light>
+        <background_color>0.8 0.8 0.8</background_color>
+        <camera_pose>14.436225404387812 -23.629919563307524 10 0 0.6 1.57</camera_pose>
+      </plugin>
+      <plugin filename="EntityContextMenuPlugin" name="Entity context menu">
+        <ignition-gui>
+          <property key="state" type="string">floating</property>
+          <property key="width" type="double">5</property>
+          <property key="height" type="double">5</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </ignition-gui>
+      </plugin>
+      <plugin filename="InteractiveViewControl" name="Interactive view control">
+        <ignition-gui>
+          <property key="resizable" type="bool">true</property>
+          <property key="width" type="double">5</property>
+          <property key="height" type="double">5</property>
+          <property key="state" type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </ignition-gui>
+      </plugin>
+      <plugin filename="CameraTracking" name="Camera Tracking">
+        <ignition-gui>
+          <property key="resizable" type="bool">true</property>
+          <property key="width" type="double">5</property>
+          <property key="height" type="double">5</property>
+          <property key="state" type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+        </ignition-gui>
+      </plugin>
+      <plugin filename="WorldControl" name="World control">
+        <ignition-gui>
+          <title>World control</title>
+          <property type="bool" key="showTitleBar">false</property>
+          <property type="bool" key="resizable">false</property>
+          <property type="double" key="height">72</property>
+          <property type="double" key="width">121</property>
+          <property type="double" key="z">1</property>
+          <property type="string" key="state">floating</property>
+          <anchors target="3D View">
+            <line own="left" target="left" />
+            <line own="bottom" target="bottom" />
+          </anchors>
+        </ignition-gui>
+        <play_pause>true</play_pause>
+        <step>true</step>
+        <start_paused>true</start_paused>
+        <use_event>true</use_event>
+      </plugin>
+      <plugin filename="WorldStats" name="World stats">
+        <ignition-gui>
+          <title>World stats</title>
+          <property type="bool" key="showTitleBar">false</property>
+          <property type="bool" key="resizable">false</property>
+          <property type="double" key="height">110</property>
+          <property type="double" key="width">290</property>
+          <property type="double" key="z">1</property>
+          <property type="string" key="state">floating</property>
+          <anchors target="3D View">
+            <line own="right" target="right" />
+            <line own="bottom" target="bottom" />
+          </anchors>
+        </ignition-gui>
+        <sim_time>true</sim_time>
+        <real_time>true</real_time>
+        <real_time_factor>true</real_time_factor>
+        <iterations>true</iterations>
+      </plugin>
+      <plugin filename="TransformControl" name="Transform control">
+        <ignition-gui>
+          <title>Transform control</title>
+          <anchors target="3D View">
+            <line own="left" target="left" />
+            <line own="top" target="top" />
+          </anchors>
+          <property key="resizable" type="bool">true</property>
+          <property key="width" type="double">230</property>
+          <property key="height" type="double">50</property>
+          <property key="state" type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+          <property key="cardBackground" type="string">#666666</property>
+        </ignition-gui>
+      </plugin>
+      <plugin filename="Shapes" name="Shapes">
+        <ignition-gui>
+          <anchors target="Transform control">
+            <line own="left" target="right" />
+            <line own="top" target="top" />
+          </anchors>
+          <property key="resizable" type="bool">true</property>
+          <property key="width" type="double">200</property>
+          <property key="height" type="double">50</property>
+          <property key="state" type="string">floating</property>
+          <property key="showTitleBar" type="bool">false</property>
+          <property key="cardBackground" type="string">#666666</property>
+        </ignition-gui>
+      </plugin>
+      <plugin filename="ComponentInspector" name="Component inspector">
+        <ignition-gui>
+          <property type="bool" key="showTitleBar">false</property>
+          <property type="string" key="state">docked</property>
+        </ignition-gui>
+      </plugin>
+      <plugin filename="EntityTree" name="Entity tree">
+        <ignition-gui>
+          <property type="bool" key="showTitleBar">false</property>
+          <property type="string" key="state">docked</property>
+        </ignition-gui>
+      </plugin>
+      <plugin
+        filename="VisualizeLidar"
+        name="Visualize Lidar">
+      </plugin>
+    </gui>
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>1 1 1 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.09</constant>
+        <linear>0.001</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+    <include>
+      <name>OfficeChairBlack</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairBlack</uri>
+      <pose>6.562113035969731 -6.72165375308089 0.0 0 0 4.2503</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OfficeChairBlack_2</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairBlack</uri>
+      <pose>6.239069750128609 -7.483497502189539 0.0 0 0 4.2239</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OfficeChairBlack_3</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairBlack</uri>
+      <pose>5.758449741995906 -8.260443694221157 0.0 0 0 4.247</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OfficeChairBlack_4</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairBlack</uri>
+      <pose>5.395881060410753 -9.02572443426407 0.0 0 0 4.2458</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OfficeChairBlack_5</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairBlack</uri>
+      <pose>3.8721597002138073 -8.264828820585564 0.0 0 0 1.0926</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OfficeChairBlack_6</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairBlack</uri>
+      <pose>4.26201267190027 -7.489812761393875 0.0 0 0 1.1213</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OfficeChairBlack_7</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairBlack</uri>
+      <pose>4.652678331098282 -6.752375034116462 0.0 0 0 1.0613</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OfficeChairBlack_8</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairBlack</uri>
+      <pose>5.0126227092607225 -6.058839363452574 0.0 0 0 1.0779</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>Fridge</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Fridge</uri>
+      <pose>15.905877648581944 -5.753531289452046 0.0 0 0 1.5708</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OfficeChairGrey</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairGrey</uri>
+      <pose>14.25575798385424 -5.546939351620108 0.0 0 0 0.0166</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>AdjTable</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/AdjTable</uri>
+      <pose>11.788455629778278 -5.979746244489952 0.0 0 0 3.1613</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>AdjTable_2</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/AdjTable</uri>
+      <pose>8.395375217623192 -4.354184980501898 0.0 0 0 1.099</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>AdjTable_3</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/AdjTable</uri>
+      <pose>14.244879822892347 -5.941482207487806 0.0 0 0 3.1594</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>SmallCubicle</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/SmallCubicle</uri>
+      <pose>10.225911509914997 -8.526615785243605 0.0 0 0 1.5708</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>SmallCubicle_2</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/SmallCubicle</uri>
+      <pose>10.183296208528093 -9.890381619078704 0.0 0 0 1.5708</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>SmallCubicle_3</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/SmallCubicle</uri>
+      <pose>13.810743847321321 -9.831106223705028 0.0 0 0 1.5708</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>SmallCubicle_4</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/SmallCubicle</uri>
+      <pose>9.391493072925952 -8.541963727519024 0.0 0 0 -1.5708</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>SmallCubicle_5</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/SmallCubicle</uri>
+      <pose>9.36992299189023 -9.890178447200816 0.0 0 0 4.7124</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>SmallCubicle_6</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/SmallCubicle</uri>
+      <pose>12.9440464782329 -9.827406802428492 0.0 0 0 4.7124</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>SmallCubicle_7</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/SmallCubicle</uri>
+      <pose>12.955153207557416 -8.471810171183453 0.0 0 0 -1.5708</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>SmallCubicle_8</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/SmallCubicle</uri>
+      <pose>13.810743847321321 -8.460694976364024 0.0 0 0 1.5708</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>AdjTable_4</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/AdjTable</uri>
+      <pose>6.734191151045531 -9.675341117324612 0.0 0 0 1.0878</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>Drawer</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Drawer</uri>
+      <pose>6.166080252997525 -10.553500766523852 0.0 0 0 1.1104</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>BigCubicle</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/BigCubicle</uri>
+      <pose>17.404769712202054 -8.093766564899202 0.0 0 0 1.6279</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>BigCubicle_2</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/BigCubicle</uri>
+      <pose>17.37541984134222 -9.551473995772533 0.0 0 0 1.5708</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>BigCubicle_3</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/BigCubicle</uri>
+      <pose>16.495355455787788 -9.581348727316906 0.0 0 0 -1.5708</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>BigCubicle_4</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/BigCubicle</uri>
+      <pose>16.513429287424863 -8.135924729560857 0.0 0 0 1.6108</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>AdjTable_5</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/AdjTable</uri>
+      <pose>22.074836169849544 -10.32024251971918 0.0 0 0 4.6088</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>AdjTable_6</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/AdjTable</uri>
+      <pose>22.382768547272782 -7.585083441133288 0.0 0 0 4.5816</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>AdjTable_7</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/AdjTable</uri>
+      <pose>19.933099819098473 -7.193799800806701 0.0 0 0 1.5733</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>AdjTable_8</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/AdjTable</uri>
+      <pose>7.47503200727756 -3.868731174774456 0.0 0 0 4.2286</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>AdjTable_9</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/AdjTable</uri>
+      <pose>13.006471037713835 -5.565732750324702 0.0 0 0 1.5914</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OfficeChairGrey_2</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairGrey</uri>
+      <pose>22.657389202217384 -3.444372845826767 0.0 0 0 1.8623</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OfficeChairGrey_3</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairGrey</uri>
+      <pose>22.423335198890985 -4.614642862458759 0.0 0 0 1.4219</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OfficeChairGrey_4</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairGrey</uri>
+      <pose>14.205616857490586 -8.518074100877419 0.0 0 0 -1.5708</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OfficeChairGrey_5</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairGrey</uri>
+      <pose>21.993355781321743 -7.517359481837455 0.0 0 0 1.419</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OfficeChairGrey_6</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairGrey</uri>
+      <pose>21.731416437755286 -10.29278045422472 0.0 0 0 1.4599</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OfficeChairBlue</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairBlue</uri>
+      <pose>8.87747668736549 -8.63695504592634 0.0 0 0 1.5708</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OfficeChairBlue_2</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairBlue</uri>
+      <pose>8.853637853693357 -9.784393622780726 0.0 0 0 1.5708</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OfficeChairBlue_3</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairBlue</uri>
+      <pose>10.702933682710107 -8.503742017991438 0.0 0 0 4.7124</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OfficeChairBlue_4</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairBlue</uri>
+      <pose>10.698159143579753 -9.870411516581347 0.0 0 0 4.7124</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OfficeChairBlue_5</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairBlue</uri>
+      <pose>12.456662539665526 -8.470294847594209 0.0 0 0 1.5708</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OfficeChairBlue_6</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairBlue</uri>
+      <pose>14.310741373307545 -9.832181341558849 0.0 0 0 -1.5708</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OfficeChairBlue_7</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairBlue</uri>
+      <pose>16.02188879085571 -9.773041394103762 0.0 0 0 1.5708</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OfficeChairBlue_8</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairBlue</uri>
+      <pose>16.041003878366954 -8.435044526780727 0.0 0 0 1.5708</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OfficeChairBlue_9</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairBlue</uri>
+      <pose>17.804290279077996 -8.544952047222951 0.0 0 0 -1.5708</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OfficeChairBlue_10</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairBlue</uri>
+      <pose>17.83296291034487 -9.72525367532564 0.0 0 0 -1.5708</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OfficeChairBlack_9</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairBlack</uri>
+      <pose>12.394542738001423 -9.712716277360999 0.0 0 0 1.5708</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OfficeChairGrey_7</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairGrey</uri>
+      <pose>11.842888762062305 -5.564640701481056 0.0 0 0 0.016</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>Drawer_2</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Drawer</uri>
+      <pose>17.944157186013715 -7.932151801534608 0.0 0 0 1.5708</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>Drawer_3</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Drawer</uri>
+      <pose>22.225716685665745 -9.267287331577394 0.0 0 0 4.6217</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>ConfTable</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/ConfTable</uri>
+      <pose>5.248606845427052 -7.381911563245789 0.0 0 0 1.1017</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>WhiteCabinet</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet</uri>
+      <pose>15.03369463879056 -2.9190973520333747 0.0 0 0 -0.0357</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>SquareShelf</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/SquareShelf</uri>
+      <pose>7.948845757501031 -2.980853137416262 0.0 0 0 2.664</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>Coke</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Coke</uri>
+      <pose>17.766119362519884 -5.5069991466253905 2.0 0 0 1.5708</pose>
+      <static>False</static>
+    </include>
+    <include>
+      <name>OpenRobotics/MetalCabinet</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/MetalCabinet</uri>
+      <pose>16.474310235436608 -10.48782545699672 0.0 0 0 0.0093</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OpenRobotics/MetalCabinet_2</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/MetalCabinet</uri>
+      <pose>17.385485314792568 -10.477751518051464 0.0 0 0 0.0172</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OpenRobotics/RecTable</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/RecTable</uri>
+      <pose>7.616727461114266 -8.193752525304586 0.0 0 0 1.0974</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OpenRobotics/SquareShelf</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/SquareShelf</uri>
+      <pose>20.748470892535565 -3.0699101438902825 0.0 0 0 -0.0083</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OpenRobotics/Fridge</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Fridge</uri>
+      <pose>15.881073748489847 -5.114826629333046 0.0 0 0 1.5708</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OpenRobotics/Drawer</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Drawer</uri>
+      <pose>12.457847708953203 -11.63887880017852 0.0 0 0 3.1</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OpenRobotics/Drawer_2</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Drawer</uri>
+      <pose>12.887175283414225 -11.645913626450374 0.0 0 0 3.0893</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OpenRobotics/Drawer_3</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Drawer</uri>
+      <pose>13.300088263240918 -11.657646802398377 0.0 0 0 3.1097</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OpenRobotics/Drawer_4</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Drawer</uri>
+      <pose>14.219745768498681 -11.627145624230515 0.0 0 0 -3.0833</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OpenRobotics/AdjTable</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/AdjTable</uri>
+      <pose>22.852434204989382 -4.62764586264356 0.0 0 0 -1.7435</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OpenRobotics/CoffeeTable</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/CoffeeTable</uri>
+      <pose>23.134165875660052 -3.3360145109534343 0.0 0 0 1.5708</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OpenRobotics/Drawer_5</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Drawer</uri>
+      <pose>8.732538948977497 -3.365973897446928 0.0 0 0 1.178</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OpenRobotics/SquareShelf_2</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/SquareShelf</uri>
+      <pose>22.52421850175704 -5.690514145327274 0.0 0 0 0.0286</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OpenRobotics/TrashBin</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/TrashBin</uri>
+      <pose>12.793360668799671 -7.634267966571886 0.0 0 0 1.5708</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OpenRobotics/TrashBin_2</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/TrashBin</uri>
+      <pose>13.18875853965348 -7.634267966571886 0.0 0 0 1.5708</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OpenRobotics/TrashBin_3</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/TrashBin</uri>
+      <pose>13.584147945012376 -7.63886473030909 0.0 0 0 1.5708</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OpenRobotics/WhiteCabinet</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/WhiteCabinet</uri>
+      <pose>17.727423585277226 -5.139376564577785 0.0 0 0 -1.564</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OpenRobotics/Drawer_6</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Drawer</uri>
+      <pose>17.746597931252857 -5.807727387878537 0.0 0 0 -1.5751</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OpenRobotics/MetalCabinetYellow</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/MetalCabinetYellow</uri>
+      <pose>21.690604286784634 -3.4578245172419018 0.0 0 0 -0.0435</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OpenRobotics/MetalCabinet_3</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/MetalCabinet</uri>
+      <pose>6.425048207849878 -3.986537001969557 0.0 0 0 2.6834</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OpenRobotics/MetalCabinet_4</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/MetalCabinet</uri>
+      <pose>5.894811934038065 -3.145168393657777 0.0 0 0 1.1071</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OpenRobotics/Drawer_7</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Drawer</uri>
+      <pose>10.526224941917455 -10.855312591125731 0.0 0 0 1.6649</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OpenRobotics/Drawer_8</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Drawer</uri>
+      <pose>10.010041389659529 -10.911235650514266 0.0 0 0 -1.512</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OpenRobotics/OfficeChairBlue</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairBlue</uri>
+      <pose>7.135413282398781 -9.977906370973656 0.0 0 0 -2.0863</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OpenRobotics/MetalCabinet_5</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/MetalCabinet</uri>
+      <pose>20.85271499688168 -6.417945657618727 0.0 0 0 -0.0145</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OpenRobotics/MetalCabinet_6</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/MetalCabinet</uri>
+      <pose>21.687717553019652 -6.425674654473364 0.0 0 0 -0.0244</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OpenRobotics/Drawer_9</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Drawer</uri>
+      <pose>19.808961801709213 -9.023447216132748 0.0 0 0 1.5708</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>OpenRobotics/Drawer_10</name>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Drawer</uri>
+      <pose>19.808961801709213 -9.44867749105637 0.0 0 0 1.5708</pose>
+      <static>True</static>
+    </include>
+    <include>
+      <name>building_L1</name>
+      <uri>model://building_L1</uri>
+      <pose>0 0 0.0 0 0 0</pose>
+    </include>
+    <include>
+      <name>mecanum_bot</name>
+      <uri>model://mecanum_bot</uri>
+      <pose>8.200888937515385 -7.009328201179764 0.1 0 0 -0.5159</pose>
+      <static>false</static>
+    </include>
+  </world>
+</sdf>

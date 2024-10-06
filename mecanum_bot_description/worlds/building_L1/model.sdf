@@ -1,0 +1,294 @@
+<?xml version='1.0' encoding='utf-8'?>
+<sdf version="1.7">
+  <model name="building_L1">
+    <static>true</static>
+    <link name="floor_1">
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://building_L1/meshes/floor_1.obj</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1</specular>
+          <pbr>
+            <metal>
+              <metalness>0.0</metalness>
+              <albedo_map>model://building_L1/meshes/blue_linoleum_high_contrast.png</albedo_map>
+            </metal>
+          </pbr>
+          <script>
+            <uri>model://building_L1/meshes/</uri>
+            <name>floor_1_Diffuse</name>
+          </script>
+        </material>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://building_L1/meshes/floor_1.obj</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <collide_bitmask>0x01</collide_bitmask>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+    <link name="floor_2">
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://building_L1/meshes/floor_2.obj</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1</specular>
+          <pbr>
+            <metal>
+              <metalness>0.0</metalness>
+              <albedo_map>model://building_L1/meshes/concrete2.png</albedo_map>
+            </metal>
+          </pbr>
+          <script>
+            <uri>model://building_L1/meshes/</uri>
+            <name>floor_2_Diffuse</name>
+          </script>
+        </material>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://building_L1/meshes/floor_2.obj</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <collide_bitmask>0x01</collide_bitmask>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+    <link name="floor_3">
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://building_L1/meshes/floor_3.obj</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1</specular>
+          <pbr>
+            <metal>
+              <metalness>0.0</metalness>
+              <albedo_map>model://building_L1/meshes/blue_linoleum_high_contrast.png</albedo_map>
+            </metal>
+          </pbr>
+          <script>
+            <uri>model://building_L1/meshes/</uri>
+            <name>floor_3_Diffuse</name>
+          </script>
+        </material>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://building_L1/meshes/floor_3.obj</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <collide_bitmask>0x01</collide_bitmask>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+    <link name="floor_4">
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://building_L1/meshes/floor_4.obj</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1</specular>
+          <pbr>
+            <metal>
+              <metalness>0.0</metalness>
+              <albedo_map>model://building_L1/meshes/black_concrete.png</albedo_map>
+            </metal>
+          </pbr>
+          <script>
+            <uri>model://building_L1/meshes/</uri>
+            <name>floor_4_Diffuse</name>
+          </script>
+        </material>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://building_L1/meshes/floor_4.obj</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <collide_bitmask>0x01</collide_bitmask>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+    <link name="wall_1">
+      <visual name="wall_1">
+        <geometry>
+          <mesh>
+            <uri>model://building_L1/meshes/wall_1.obj</uri>
+          </mesh>
+        </geometry>
+        <transparency>0.0</transparency>
+        <material>
+          <diffuse>1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1</specular>
+          <pbr>
+            <metal>
+              <metalness>0.0</metalness>
+              <albedo_map>model://building_L1/meshes/wall_white.png</albedo_map>
+            </metal>
+          </pbr>
+          <script>
+            <uri>model://building_L1/meshes/</uri>
+            <name>wall_1_Diffuse</name>
+          </script>
+        </material>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://building_L1/meshes/wall_1.obj</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <collide_bitmask>0x01</collide_bitmask>
+          </contact>
+        </surface>
+      </collision>
+      <pose>2.2104525034268714 -11.594893332298748 0 0 0 0</pose>
+    </link>
+    <link name="wall_2">
+      <visual name="wall_2">
+        <geometry>
+          <mesh>
+            <uri>model://building_L1/meshes/wall_2.obj</uri>
+          </mesh>
+        </geometry>
+        <transparency>0.5</transparency>
+        <material>
+          <diffuse>1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1</specular>
+          <pbr>
+            <metal>
+              <metalness>0.0</metalness>
+              <albedo_map>model://building_L1/meshes/wall_white.png</albedo_map>
+            </metal>
+          </pbr>
+          <script>
+            <uri>model://building_L1/meshes/</uri>
+            <name>wall_2_Diffuse</name>
+          </script>
+        </material>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://building_L1/meshes/wall_2.obj</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <collide_bitmask>0x01</collide_bitmask>
+          </contact>
+        </surface>
+      </collision>
+      <pose>5.505273654870084 -12.057908109495912 0 0 0 0</pose>
+    </link>
+    <link name="wall_3">
+      <visual name="wall_3">
+        <geometry>
+          <mesh>
+            <uri>model://building_L1/meshes/wall_3.obj</uri>
+          </mesh>
+        </geometry>
+        <transparency>0.19999999999999996</transparency>
+        <material>
+          <diffuse>1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1</specular>
+          <pbr>
+            <metal>
+              <metalness>0.0</metalness>
+              <albedo_map>model://building_L1/meshes/wall_white.png</albedo_map>
+            </metal>
+          </pbr>
+          <script>
+            <uri>model://building_L1/meshes/</uri>
+            <name>wall_3_Diffuse</name>
+          </script>
+        </material>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://building_L1/meshes/wall_3.obj</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <collide_bitmask>0x01</collide_bitmask>
+          </contact>
+        </surface>
+      </collision>
+      <pose>5.499658357842799 -10.921386983607634 0 0 0 0</pose>
+    </link>
+    <link name="wall_4">
+      <visual name="wall_4">
+        <geometry>
+          <mesh>
+            <uri>model://building_L1/meshes/wall_4.obj</uri>
+          </mesh>
+        </geometry>
+        <transparency>0.0</transparency>
+        <material>
+          <diffuse>1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1</specular>
+          <pbr>
+            <metal>
+              <metalness>0.0</metalness>
+              <albedo_map>model://building_L1/meshes/blue_linoleum_high_contrast.png</albedo_map>
+            </metal>
+          </pbr>
+          <script>
+            <uri>model://building_L1/meshes/</uri>
+            <name>wall_4_Diffuse</name>
+          </script>
+        </material>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://building_L1/meshes/wall_4.obj</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <collide_bitmask>0x01</collide_bitmask>
+          </contact>
+        </surface>
+      </collision>
+      <pose>10.549150932467981 -4.759113568297709 0 0 0 0</pose>
+    </link>
+  </model>
+</sdf>
